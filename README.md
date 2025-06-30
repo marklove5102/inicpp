@@ -1,3 +1,13 @@
+### What is this C++ library for?
+
+> 🔥 1.Aims to make INI file processing **simple**, **convenient**, and **intuitive**.
+
+> 🔥 2.Advancing the enduring excellence of **C++** through collaborative innovation.
+
+> 🔥 3.Let C++ keep **simple**,**easy** and **free**.
+
+---
+
 ### Ⅰ、Project
 You can view the project at [https://github.com/dujingning/inicpp.git](https://github.com/dujingning/inicpp.git) or [https://gitee.com/dujingning/inicpp](https://gitee.com/dujingning/inicpp).
 
