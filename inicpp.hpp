@@ -83,16 +83,17 @@ namespace inicpp
 		virtual parentHelper *parent()
 		{
 			INI_DEBUG("called parentHelper virtual impl: need to impl parent");
-		};
+			return nullptr;
+		}
 		virtual void setParent(parentHelper *parent)
 		{
 			INI_DEBUG("called parentHelper virtual impl: need to impl setParent");
-		};
+		}
 		virtual bool set(const std::string &Section, const std::string &Key, const std::string &Value, const std::string &comment = "")
 		{
 			INI_DEBUG("called parentHelper virtual impl: need to impl set");
 			return true;
-		};
+		}
 	};
 
 	class ValueProxy
