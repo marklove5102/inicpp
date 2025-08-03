@@ -528,13 +528,24 @@ namespace inicpp
 	class IniManager : parentHelper
 	{
 	public:
+#ifdef _ENBABLE_INICPP_STD_WSTRING_
+		explicit IniManager(const std::wstring &configFileName = L"")
+		{
+                        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+                        std::string stringValue = converter.to_bytes(configFileName);
+			_configFileName = stringValue;
+
+			_iniData.setParent(this);
+			parse();
+		}
+#else
 		explicit IniManager(const std::string &configFileName = "") : _configFileName(configFileName)
 		{
 			_iniData.setParent(this);
 
 			parse();
 		}
-
+#endif
 		~IniManager()
 		{
 			_iniFile.close();
@@ -887,10 +898,20 @@ namespace inicpp
 			return _iniData.getSectionMap(sectionName);
 		}
 
+#ifdef _ENBABLE_INICPP_STD_WSTRING_
+		void setFileName(const std::wstring &fileName)
+		{
+                        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+                        std::string name = converter.to_bytes(fileName);
+
+			_configFileName = name;
+		}
+#else
 		void setFileName(const std::string &fileName)
 		{
 			_configFileName = fileName;
 		}
+#endif
 
 	private:
 		bool filterData(std::string &data)

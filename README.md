@@ -20,7 +20,7 @@ You can view the project at [https://github.com/dujingning/inicpp.git](https://g
 
 The INI header-only library for Modern C++ supports **reading**, **writing**, and even **commenting**. It is easy to use and simplifies working with INI files.
 
-- New Feature : [Super Easy Binding to Your Data Structures (For Read)](#6super-easy-binding-to-your-data-structures-read).
+- New Feature : [Super Easy Binding to Your Data Structures (For Read)](#7super-easy-binding-to-your-data-structures-read).
 
 
 ---
@@ -153,8 +153,42 @@ int main()
 }
 ```
 
+#### 6.std::wstring
+```cpp
+#ifndef _ENBABLE_INICPP_STD_WSTRING_
+#define _ENBABLE_INICPP_STD_WSTRING_ // std::wstring support
+#endif
 
-#### 6.Super Easy Binding to Your Data Structures (Read).
+#include "inicpp.hpp"
+
+#include <bits/stdc++.h>
+
+int main()
+{
+    {
+        inicpp::IniManager _ini(L"config.ini"); // Load and parse the INI file.
+        std::wstring ws = _ini["server"].toWString("info");
+        int port = _ini["server"]["port"];
+        std::string ip = _ini["server"]["ip"];
+
+        std::cout << ip << ":" << port << std::endl;
+    }
+    // or
+    {
+        inicpp::IniManager _ini;
+        _ini.setFileName(L"config.ini");
+        _ini.parse();
+        std::wstring ws = _ini["server"].toWString("info");
+        int port = _ini["server"]["port"];
+        std::string ip = _ini["server"]["ip"];
+
+        std::cout << ip << ":" << port << std::endl;
+    }
+}
+```
+
+
+#### 7.Super Easy Binding to Your Data Structures (Read).
 
 config.ini :
 ```
@@ -221,7 +255,7 @@ int main()
 ```
 
 
-#### 7.how to use example/main.cpp
+#### 8.how to use example/main.cpp
 You can compile it using `example/Makefile` or any other method you prefer.
 
 If make is not available, use the following command: `g++ -I../ -std=c++11 main.cpp -o iniExample`.
